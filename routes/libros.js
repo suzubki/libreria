@@ -7,7 +7,7 @@ const router = Router();
 
 router.get("/", Libros.conseguirLibrosController);
 
-const myFirstMiddleware = (req, res, next) => {
+const postLibroMiddleware = (req, res, next) => {
     const postLibroSchema = Joi.object({
         titulo: Joi.string().required(),
         genero: Joi.string().required(),
@@ -22,9 +22,22 @@ const myFirstMiddleware = (req, res, next) => {
         idiomas: Joi.object(),
         tipo: Joi.string(),
     });
+
+    try {
+        //Validate Async
+        const result = postLibroSchema.validate({ ...req.body });
+        console.log(result);
+        next();
+    } catch (error) {
+        return res.json({
+            message:
+                "Error al validar, asegúrate de que todo los datos hayan sido ingresados correctamente!",
+            error,
+        });
+    }
 };
 
-router.post("/", Libros.enviarLibroController);
+router.post("/", postLibroMiddleware, Libros.enviarLibroController);
 
 router.put("/:id", Libros.actualizarLibroController);
 
