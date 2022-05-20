@@ -20,7 +20,6 @@ const conseguirLibrosController = async (req, res) => {
  * Requerido: titulo, genero, mayoria_de_edad, portada, cantidad, libro_id
  * No requerido: autor, editorial, fecha_de_impresion, numero_de_pagina, isbn, idiomas, tipo
  **/
-
 const enviarLibroController = async (req, res) => {
     try {
         await database("libros").insert({ ...req.body, libro_id: uuidv4() });
