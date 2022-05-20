@@ -1,21 +1,15 @@
 import { Router } from "express";
-import database from "../db/knexfile.js";
+
+import { Libros } from "../controllers/librosController.js";
 
 const router = Router();
 
-router.get("/", async (req, res) => {
-    let response = {};
-    try {
-        response = await database("libro_usuario").select("libro_id");
-        return res.json({
-            message: "entrando al path libros",
-            data: response,
-        });
-    } catch (error) {
-        return res.json({
-            message: "Error " + error,
-        });
-    }
-});
+router.get("/", Libros.conseguirLibrosController);
+
+router.post("/", Libros.enviarLibroController);
+
+router.put("/:id", Libros.actualizarLibroController);
+
+router.delete("/:id", Libros.eliminarLibroController);
 
 export default router;
