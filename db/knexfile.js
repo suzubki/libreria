@@ -8,8 +8,8 @@ dotenv.config({
 const database = knex({
     client: "pg",
     connection: {
-        uri: process.env.DATABASE.URL,
-        ssl: true,
+        connectionString: process.env.DATABASE_URL,
+        ssl: { rejectUnauthorized },
     },
 });
 // connection: process.env.DATABASE_URL || {
