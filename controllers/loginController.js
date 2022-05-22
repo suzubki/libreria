@@ -7,7 +7,7 @@ const ingresarUsuarioController = async (req, res) => {
     const { correo_electronico, contraseña } = req.body;
 
     if (!correo_electronico || !contraseña) {
-        res.json({
+        return res.json({
             message: "Ingrese las credenciales correctas",
         });
     }

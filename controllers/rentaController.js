@@ -14,10 +14,10 @@ const crearRenta = async (req, res) => {
     const {
         nombre,
         fecha_de_nacimiento,
-        direcciones,
         correo_electronico,
+        direcciones,
         telefono,
-        titulo,
+        tituloDelLibro: titulo,
         fecha_de_prestamo,
         fecha_de_devolucion,
     } = req.body;

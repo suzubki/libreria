@@ -11,7 +11,7 @@ const conseguirLibrosController = async (req, res) => {
         });
     } catch (error) {
         return res.json({
-            message: "Error " + error,
+            Error: { ...error },
         });
     }
 };
