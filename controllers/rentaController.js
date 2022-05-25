@@ -17,7 +17,7 @@ const crearRenta = async (req, res) => {
         correo_electronico,
         direcciones,
         telefono,
-        tituloDelLibro: titulo,
+        titulo_del_libro: titulo,
         fecha_de_prestamo,
         fecha_de_devolucion,
     } = req.body;

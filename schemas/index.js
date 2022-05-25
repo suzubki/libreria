@@ -17,7 +17,8 @@ const libro = Joi.object({
     titulo: Joi.string().trim().required(),
     genero: Joi.string()
         .trim()
-        .valid(...GENEROS),
+        .valid(...GENEROS)
+        .required(),
     mayoria_de_edad: Joi.boolean().required(),
     portada: Joi.string().trim().required(),
     cantidad: Joi.number().required(),
@@ -40,7 +41,7 @@ const clientes = Joi.object({
 const ingresarRenta = Joi.object({
     fecha_de_prestamo: Joi.date().required(),
     fecha_de_devolucion: Joi.date().required(),
-    tituloDelLibro: Joi.string().required(),
+    titulo_del_libro: Joi.string().required(),
     nombre: Joi.string(),
     fecha_de_nacimiento: Joi.date(),
     correo_electronico: Joi.string(),
